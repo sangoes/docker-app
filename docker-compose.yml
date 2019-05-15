@@ -49,3 +49,18 @@ services:
     environment:
       - RABBITMQ_DEFAULT_USER=sangoes
       - RABBITMQ_DEFAULT_PASS=Sangoes123456
+  wordpress:
+        image: wordpress:latest
+        hostname: wordpress
+        restart: always
+        container_name: wordpress
+        environment:
+            - WORDPRESS_DB_HOST=mysql
+            - WORDPRESS_DB_USER=root
+            - WORDPRESS_DB_PASSWORD=root
+            - WORDPRESS_DB_NAME=xbclub
+            - WORDPRESS_TABLE_PREFIX=wp_
+        volumes:
+            - ./www:/var/www/html:rw
+            - ./php/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini:ro
+            - /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime:ro
