@@ -54,6 +54,8 @@ services:
         hostname: wordpress
         restart: always
         container_name: wordpress
+        ports:
+          - "8282:80"
         environment:
             - WORDPRESS_DB_HOST=mysql
             - WORDPRESS_DB_USER=root
